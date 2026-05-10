@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Mother's Day ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #ff9eb5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    max-width: 700px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 2;
+}
+
+.photo {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #d63384;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    background: #d63384;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#surprise {
+    display: none;
+    margin-top: 25px;
+    color: #d63384;
+    font-size: 1.4rem;
+    font-weight: bold;
+    min-height: 100px;
+}
+
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Mother's Day ❤️</h1>
+
+    <img src="mom.png" class="photo" alt="Mom">
+
+    <p>For the most special person in my life 🌷</p>
+
+    <button onclick="startSurprise()">Open My Message ❤️</button>
+
+    <div id="surprise"></div>
+</div>
+
+<script>
+function startSurprise() {
+    const message = "Happy Mother's day my dear Mom thankyou very much for always taking care of me and always being there for me. I can never imagine a world withyou you. I have no words to describe how much special you are for me. I just wanna say  I love you  Mom ❤️";
+    
+    let i = 0;
+    const surprise = document.getElementById("surprise");
+    surprise.style.display = "block";
+    surprise.innerHTML = "";
+
+    const typing = setInterval(() => {
+        if(i < message.length){
+            surprise.innerHTML += message.charAt(i);
+            i++;
+        } else {
+            clearInterval(typing);
+        }
+    }, 50);
+
+    for(let j = 0; j < 25; j++){
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random()*3+2)+"s";
+        document.body.appendChild(heart);
+    }
+}
+</script>
+
+</body>
+</html>
